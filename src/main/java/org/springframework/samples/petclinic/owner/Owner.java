@@ -55,6 +55,9 @@ public class Owner extends Person {
 	@NotBlank
 	private String city;
 
+	@Column(name = "age") // maps to the new AGE column
+	private Integer age;
+
 	@Column(name = "telephone")
 	@NotBlank
 	@Pattern(regexp = "\\d{10}", message = "{telephone.invalid}")
@@ -64,6 +67,14 @@ public class Owner extends Person {
 	@JoinColumn(name = "owner_id")
 	@OrderBy("name")
 	private final List<Pet> pets = new ArrayList<>();
+
+	public Integer getAge() {
+		return this.age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
 
 	public String getAddress() {
 		return this.address;
